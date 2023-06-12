@@ -1,0 +1,94 @@
+/* styles.css */
+
+.copy-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+}
+
+/* Light mode styles */
+body.light {
+    background-color: #F9FAFB;
+    color: #4B5563;
+}
+.bg-white.light {
+    background-color: #FFFFFF;
+    color: #4B5563;
+}
+.bg-gray-100.light {
+    background-color: #F9FAFB;
+    color: #4B5563;
+}
+.bg-gray-900.light {
+    background-color: #111827;
+    color: #F9FAFB;
+}
+.text-gray-800.light {
+    color: #4B5563;
+}
+.text-gray-700.light {
+    color: #9CA3AF;
+}
+
+/* Dark mode styles */
+body.dark {
+    background-color: #1F2937;
+    color: #F9FAFB;
+}
+.bg-white.dark {
+    background-color: #1E293B;
+    color: #F9FAFB;
+}
+.bg-gray-100.dark {
+    background-color: #1F2937;
+    color: #F9FAFB;
+}
+.bg-gray-900.dark {
+    background-color: #111827;
+    color: #F9FAFB;
+}
+.text-gray-800.dark {
+    color: #F9FAFB;
+}
+.text-gray-700.dark {
+    color: #D1D5DB;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* circle favicon */
+
+link[rel="icon"] {
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.copyButton {
+    background-color: #4C51BF;
+    color: #FFF;
+    transition: background-color 0.3s ease;
+}
+
+.copyButton:hover {
+    background-color: #3C3A8D;
+}
+
+.themeToggle {
+    background-color: #E5E7EB;
+    transition: background-color 0.3s ease;
+}
+
+.themeToggle:hover {
+    background-color: #D1D5DB;
+}
