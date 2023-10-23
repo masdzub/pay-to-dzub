@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Payment Options</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+  <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+  
+  <div class="page-container">
+  <!--
+    <div class="ui segment">
+      <h1 class="ui header page-header">Pay To Dzub</h1>
+    </div>
+  -->
+
+    <h2>Bank Accounts</h2>
+    <div class="ui cards">
+      <!-- Bank Mandiri -->
+      <div class="card rekening-item">
+        <div class="image rekening-image">
+          <img src="https://tulisan.masdzub.com/files/mandiri.webp" alt="Bank Mandiri">
+        </div>
+        <div class="content rekening-info">
+          <div class="header">a.n Ahmad Dzubayyan</div>
+          <div class="description">
+            <div class="ui action input">
+              <input type="text" value="1370020844573" id="mandiriAccount">
+              <button class="copy-button" onclick="copyToClipboard('mandiriAccount')">
+                Copy
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bank Jago -->
+      <div class="card rekening-item">
+        <div class="image rekening-image">
+          <img src="https://tulisan.masdzub.com/files/jago.png" alt="Bank Jago">
+        </div>
+        <div class="content rekening-info">
+          <div class="header">a.n Ahmad Dzubayyan</div>
+          <div class="description">
+            <div class="ui action input">
+              <input type="text" value="100297069639" id="jagoAccount">
+              <button class="copy-button" onclick="copyToClipboard('jagoAccount')">
+                Copy
+              </button>
+            </div>
+            <div class="ui action input">
+              <input type="text" value="masdzub" id="jagoID">
+              <button class="copy-button" onclick="copyToClipboard('jagoID')">
+                Copy
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2>E-Wallets</h2>
+    <div class="ui cards">
+      <!-- GoPay -->
+      <div class="card ewallet-item">
+        <div class="image ewallet-image">
+          <img src="https://tulisan.masdzub.com/files/gopay.png" alt="GoPay">
+        </div>
+        <div class="content ewallet-info">
+          <!--div class="header">GoPay</div-->
+          <div class="description">
+            <div class="ui action input">
+              <input type="text" value="0895369092932" id="gopayPhone">
+              <button class="copy-button" onclick="copyToClipboard('gopayPhone')">
+                Copy
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Add more E-Wallet items following the same format -->
+
+      <!-- ovo -->
+      <div class="card ewallet-item">
+        <div class="image ewallet-image">
+          <img src="https://tulisan.masdzub.com/files/ovo.png" alt="OVO">
+        </div>
+        <div class="content ewallet-info">
+          <!--div class="header">OVO</div-->
+          <div class="description">
+            <div class="ui action input">
+              <input type="text" value="0895369092932" id="ovoPhone">
+              <button class="copy-button" onclick="copyToClipboard('ovoPhone')">
+                Copy
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Add more E-Wallet items following the same format -->
+
+      <!-- shopeepay -->
+      <div class="card ewallet-item">
+        <div class="image ewallet-image">
+          <img src="https://tulisan.masdzub.com/files/shopeepay.png" alt="ShopeePay">
+        </div>
+        <div class="content ewallet-info">
+          <!--div class="header">ShopeePay</div-->
+          <div class="description">
+            <div class="ui action input">
+              <input type="text" value="0895369092932" id="shopePhone">
+              <button class="copy-button" onclick="copyToClipboard('shopeePhone')">
+                Copy
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Add more E-Wallet items following the same format -->
+
+      <!-- DANA -->
+      <div class="card ewallet-item">
+        <div class="image ewallet-image">
+          <img src="https://tulisan.masdzub.com/files/dana.png" alt="Dana">
+        </div>
+        <div class="content ewallet-info">
+          <!--div class="header">DANA</div-->
+          <div class="description">
+            <div class="ui action input">
+              <input type="text" value="0895369092932" id="danaPhone">
+              <button class="copy-button" onclick="copyToClipboard('danaPhone')">
+                Copy
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Add more E-Wallet items following the same format -->
+
+      <!-- LinkAja -->
+      <div class="card ewallet-item">
+        <div class="image ewallet-image">
+          <img src="https://tulisan.masdzub.com/files/linkaja.png" alt="LinkAja">
+        </div>
+        <div class="content ewallet-info">
+          <!--div class="header">LinkAja</div-->
+          <div class="description">
+            <div class="ui action input">
+              <input type="text" value="0895369092932" id="linkPhone">
+              <button class="copy-button" onclick="copyToClipboard('linkPhone')">
+                Copy
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add more E-Wallet items following the same format -->
+
+    </div>
+  </div>
+
+  <script>
+    function copyToClipboard(elementId) {
+      const input = document.getElementById(elementId);
+      input.select();
+      document.execCommand("copy");
+    }
+  </script>
+</body>
+</html>
