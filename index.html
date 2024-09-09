@@ -4,60 +4,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Bank and E-wallet</title>
+    
+    <!-- To prevent indexing by search engines -->
     <meta name="robots" content="noindex, nofollow">
+
+    <!-- Favicon dummy -->
     <link rel="icon" href="https://ucarecdn.com/4aa797ea-6ac4-4d01-b36f-87d992de5f07/-/preview/50x50/-/quality/smart/-/format/auto/" type="image/x-icon">
+
+
+    <!-- Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/styles/styles.css">
 </head>
 
 <body class="bg-gray-100">
 
+  <!-- Header -->
   <header class="container mx-auto p-8">
     <div class="flex flex-col items-center mb-10">
-      <img src="<%= profile.image %>" alt="Profile Picture" class="w-32 h-32 rounded-full border-4 border-white">
-      <h1 class="text-2xl font-bold mt-4"><%= profile.name %></h1>
+      <img src="https://www.gravatar.com/avatar/509d3b6019d078eb39f42d51e7024abc?s=200" alt="Profile Picture" class="w-32 h-32 rounded-full border-4 border-white">
+      <h1 class="text-2xl font-bold mt-4">Dzubayyan Ahmad</h1>
     </div>
   </header>
 
+  <!-- Bank Account Numbers -->
   <section class="container mx-auto text-center lg:text-left lg:w-1/3 bg-white p-8 rounded shadow-md mb-8 lg:mx-auto">
     <h2 class="text-2xl font-semibold mb-6 lg:text-center">Bank Account</h2>
 
-    <% bankAccounts.forEach(account => { %>
     <div class="mb-6">
-      <h3 class="text-lg font-semibold mb-2"><%= account.name %></h3>
+      <h3 class="text-lg font-semibold mb-2">Jago / Artos</h3>
       <div class="flex items-center justify-between">
-        <span class="text-gray-700 mr-2"><%= account.number %></span>
-        <button data-clipboard-text="<%= account.number %>" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 focus:outline-none">
+        <span id="bankJagoNumber" class="text-gray-700 mr-2">100297069639</span>
+        <button data-clipboard-text="100297069639" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 focus:outline-none">
           <i class="far fa-copy mr-1"></i> Copy
         </button>
       </div>
     </div>
-    <% }) %>
+
+    <div class="mb-6">
+      <h3 class="text-lg font-semibold mb-2">Mandiri</h3>
+      <div class="flex items-center justify-between">
+        <span id="mandiriNumber" class="text-gray-700 mr-2">1370020844573</span>
+        <button data-clipboard-text="1370020844573" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 focus:outline-none">
+          <i class="far fa-copy mr-1"></i> Copy
+        </button>
+      </div>
+    </div>
+
+    <div class="mb-6">
+      <h3 class="text-lg font-semibold mb-2">BCA</h3>
+      <div class="flex items-center justify-between">
+        <span id="bcaNumber" class="text-gray-700 mr-2">1430756687</span>
+        <button data-clipboard-text="1430756687" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 focus:outline-none">
+          <i class="far fa-copy mr-1"></i> Copy
+        </button>
+      </div>
+    </div>
   </section>
 
+  <!-- E-wallet Numbers -->
   <section class="container mx-auto text-center lg:text-left lg:w-1/3 bg-white p-8 rounded shadow-md mb-8 lg:mx-auto">
     <h2 class="text-2xl font-semibold mb-6 lg:text-center">E-Wallet</h2>
 
-    <% ewallets.forEach(wallet => { %>
     <div class="mb-6">
-      <h3 class="text-lg font-semibold mb-2"><%= wallet.name %></h3>
+      <h3 class="text-lg font-semibold mb-2">OVO | GoPay | DANA | LinkAja | ShopeePay</h3>
       <div class="flex items-center justify-between">
-        <span class="text-gray-700 mr-2"><%= wallet.number %></span>
-        <button data-clipboard-text="<%= wallet.number %>" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 focus:outline-none">
+        <span id="ovoNumber" class="text-gray-700 mr-2">0895369092932</span>
+        <button data-clipboard-text="0895369092932" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 focus:outline-none">
           <i class="far fa-copy mr-1"></i> Copy
         </button>
       </div>
     </div>
-    <% }) %>
     <div class="bg-yellow-100 p-3 mt-2 rounded">
-      <p class="text-yellow-800 text-sm lg:text-center">
-        Please <strong>do not top up</strong>, because the top-up fee will be charged to the recipient 🙏🏻
-      </p>
+        <p class="text-yellow-800 text-sm lg:text-center">
+          Please <strong>do not top up</strong>, because the top-up fee will be charged to the recipient 🙏🏻
+        </p>
     </div>
+    <!-- Add other e-wallet sections similarly -->
   </section>
 
+  <!-- Footer -->
   <footer class="mt-8 text-center text-gray-600">
     <p class="mb-4">
       © <a href="https://masdzub.com" target="_blank" class="text-blue-500 hover:underline">Dzubayyan Ahmad</a>.
@@ -65,8 +95,38 @@
     </p>
   </footer>
 
+  <!-- Clipboard.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-  <script src="/scripts/scripts.js"></script>
-</body>
+  <script>
+    // Initialize Clipboard.js
+    document.addEventListener('DOMContentLoaded', function () {
+      var clipboard = new ClipboardJS('.bg-blue-500', {
+        text: function(trigger) {
+          return trigger.getAttribute('data-clipboard-text');
+        }
+      });
 
+      clipboard.on('success', function(e) {
+        var button = e.trigger;
+        var originalText = button.innerHTML;
+        button.innerHTML = '<i class="far fa-copy mr-1"></i> Copied!';
+        setTimeout(function() {
+          button.innerHTML = originalText;
+        }, 500);
+        e.clearSelection();
+      });
+    });
+  </script>
+
+  <!-- Disable Right Click -->
+  <script>
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+  </script>
+  
+  <!-- Font Awesome -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
+</body>
 </html>
