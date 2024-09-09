@@ -1,0 +1,14 @@
+{
+    "profile": {
+      "image": "https://www.gravatar.com/avatar/509d3b6019d078eb39f42d51e7024abc?s=200",
+      "name": "Dzubayyan Ahmad"
+    },
+    "bankAccounts": [
+      { "name": "Jago / Artos", "number": "100297069639" },
+      { "name": "Mandiri", "number": "1370020844573" },
+      { "name": "BCA", "number": "1430756687" }
+    ],
+    "ewallets": [
+      { "name": "OVO | GoPay | DANA | LinkAja | ShopeePay", "number": "0895369092932" }
+    ]
+  }
