@@ -13,7 +13,6 @@
     <!-- Favicon dummy -->
     <link rel="icon" href="https://ucarecdn.com/4aa797ea-6ac4-4d01-b36f-87d992de5f07/-/preview/50x50/-/quality/smart/-/format/auto/" type="image/x-icon">
 
-
     <!-- Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     
@@ -31,6 +30,23 @@
     </div>
   </header>
 
+  <!-- QRIS -->
+  <section class="container mx-auto text-center lg:w-1/3 bg-white p-8 rounded shadow-md mb-8 lg:mx-auto">
+    <h2 class="text-2xl font-semibold mb-6">QRIS (Quick Response Code Indonesian Standard)</h2>
+    <div class="mb-6">
+      <button id="qrisButton" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 focus:outline-none mb-4 flex items-center mx-auto" onclick="toggleQRIS()">
+        <i id="qrisIcon" class="far fa-eye mr-2"></i>
+        <span id="qrisButtonText">Show QRIS</span>
+      </button>
+      
+      <div id="qrisContainer" class="hidden transition-all duration-300" style="opacity: 0; transition: opacity 0.3s ease-in-out;">
+        <div class="flex justify-center items-center">
+          <img src="https://ucarecdn.com/4f2b73ac-dae7-4076-bfdd-4c5e066ce184/-/preview/900x900/-/quality/smart/-/format/auto/" alt="QRIS" class="border-4 border-white">
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Bank Account Numbers -->
   <section class="container mx-auto text-center lg:text-left lg:w-1/3 bg-white p-8 rounded shadow-md mb-8 lg:mx-auto">
     <h2 class="text-2xl font-semibold mb-6 lg:text-center">Bank Account</h2>
@@ -38,7 +54,7 @@
     <div class="mb-6">
       <h3 class="text-lg font-semibold mb-2">Jago / Artos</h3>
       <div class="flex items-center justify-between">
-        <span id="bankJagoNumber" class="text-gray-700 mr-2">100297069639</span>
+        <span class="text-gray-700 mr-2">100297069639</span>
         <button data-clipboard-text="100297069639" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 focus:outline-none">
           <i class="far fa-copy mr-1"></i> Copy
         </button>
@@ -48,7 +64,7 @@
     <div class="mb-6">
       <h3 class="text-lg font-semibold mb-2">Mandiri</h3>
       <div class="flex items-center justify-between">
-        <span id="mandiriNumber" class="text-gray-700 mr-2">1370020844573</span>
+        <span class="text-gray-700 mr-2">1370020844573</span>
         <button data-clipboard-text="1370020844573" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 focus:outline-none">
           <i class="far fa-copy mr-1"></i> Copy
         </button>
@@ -58,7 +74,7 @@
     <div class="mb-6">
       <h3 class="text-lg font-semibold mb-2">BCA</h3>
       <div class="flex items-center justify-between">
-        <span id="bcaNumber" class="text-gray-700 mr-2">1430756687</span>
+        <span class="text-gray-700 mr-2">1430756687</span>
         <button data-clipboard-text="1430756687" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 focus:outline-none">
           <i class="far fa-copy mr-1"></i> Copy
         </button>
@@ -73,7 +89,7 @@
     <div class="mb-6">
       <h3 class="text-lg font-semibold mb-2">OVO | GoPay | DANA | LinkAja | ShopeePay</h3>
       <div class="flex items-center justify-between">
-        <span id="ovoNumber" class="text-gray-700 mr-2">0895369092932</span>
+        <span class="text-gray-700 mr-2">0895369092932</span>
         <button data-clipboard-text="0895369092932" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 focus:outline-none">
           <i class="far fa-copy mr-1"></i> Copy
         </button>
@@ -87,28 +103,7 @@
     <!-- Add other e-wallet sections similarly -->
   </section>
 
-<!-- QRIS -->
-<section class="container mx-auto text-center lg:w-1/3 bg-white p-8 rounded shadow-md mb-8 lg:mx-auto">
-  <h2 class="text-2xl font-semibold mb-6">QRIS (Quick Response Code Indonesian Standard)</h2>
-  <div class="mb-6">
-    <button 
-      id="qrisButton" 
-      class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none mb-4 flex items-center mx-auto"
-      onclick="toggleQRIS()"
-    >
-      <i id="qrisIcon" class="far fa-eye mr-2"></i>
-      <span id="qrisButtonText">Show QRIS</span>
-    </button>
-    
-    <div id="qrisContainer" class="hidden transition-all duration-300" style="opacity: 0; transition: opacity 0.3s ease-in-out;">
-      <div class="flex justify-center items-center">
-        <img src="https://ucarecdn.com/4f2b73ac-dae7-4076-bfdd-4c5e066ce184/-/preview/900x900/-/quality/smart/-/format/auto/" alt="QRIS" class="border-4 border-white">
-      </div>
-    </div>
-  </div>
-</section>
-
-    <!-- Footer -->
+  <!-- Footer -->
   <footer class="mt-8 text-center text-gray-600">
     <p class="mb-4">
       © <a href="https://masdzub.com" target="_blank" class="text-blue-500 hover:underline">Dzubayyan Ahmad</a>.

@@ -34,4 +34,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Thanks to the developers of Tailwind CSS, Uploadcare, and ClipboardJS for their excellent tools.
 
 Feel free to open an issue or submit a pull request for any enhancements or bug fixes!
-
