@@ -1,175 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Bank and E-wallet</title>
     
-    <!-- To prevent indexing by search engines -->
     <meta name="robots" content="noindex, nofollow">
-
-    <!-- Favicon dummy -->
     <link rel="icon" href="https://ucarecdn.com/4aa797ea-6ac4-4d01-b36f-87d992de5f07/-/preview/50x50/-/quality/smart/-/format/auto/" type="image/x-icon">
-
-    <!-- Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    
-    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Light Mode Colors */
+            --light-background: #fafafa;  /* Main background */
+            --light-secondary: #e4e5f1;   /* Secondary/card background */
+            --light-accent: #d2d3db;      /* Borders and accents */
+            --light-text: #9394a5;        /* Regular text */
+            --light-heading: #484b6a;     /* Headings and important text */
+            
+            /* Dark Mode Colors (Dracula ) */
+            --dark-background: #282a36;
+            --dark-current-line: #44475a;
+            --dark-foreground: #f8f8f2;
+            --dark-comment: #6272a4;
+            --dark-cyan: #8be9fd;
+            --dark-green: #50fa7b;
+            --dark-orange: #ffb86c;
+            --dark-pink: #ff79c6;
+            --dark-purple: #bd93f9;
+            --dark-red: #ff5555;
+            --dark-yellow: #f1fa8c;
+        }
+
+        body {
+            background-color: var(--light-background);
+            color: var(--light-text);
+            transition: all 0.3s ease;
+        }
+
+        .card {
+            background-color: var(--light-secondary);
+            border: 1px solid var(--light-accent);
+            transition: all 0.3s ease;
+        }
+
+        .button {
+            background-color: var(--light-heading);
+            color: var(--light-background);
+            transition: all 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: var(--light-text);
+        }
+
+        .heading {
+            color: var(--light-heading);
+        }
+
+        .subheading {
+            color: var(--light-text);
+        }
+
+        .warning {
+            background-color: var(--light-accent);
+            color: var(--light-heading);
+        }
+
+        /* Dark Mode Styles (unchanged) */
+        .dark {
+            background-color: var(--dark-background);
+            color: var(--dark-foreground);
+        }
+
+        .dark .card {
+            background-color: var(--dark-current-line);
+            border-color: var(--dark-comment);
+        }
+
+        .dark .button {
+            background-color: var(--dark-purple);
+            color: var(--dark-foreground);
+        }
+
+        .dark .button:hover {
+            background-color: var(--dark-pink);
+        }
+
+        .dark .heading {
+            color: var(--dark-cyan);
+        }
+
+        .dark .subheading {
+            color: var(--dark-green);
+        }
+
+        .dark .warning {
+            background-color: var(--dark-orange);
+            color: var(--dark-background);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            z-index: 1000;
+            background-color: var(--light-secondary);
+            border: 1px solid var(--light-accent);
+            color: var(--light-heading);
+            transition: all 0.3s ease;
+        }
+
+        .dark .theme-toggle {
+            background-color: var(--dark-current-line);
+            border-color: var(--dark-comment);
+            color: var(--dark-foreground);
+        }
+
+        /* Custom link colors */
+        a {
+            color: var(--light-heading);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--light-text);
+        }
+
+        .dark a {
+            color: var(--dark-purple);
+        }
+
+        .dark a:hover {
+            color: var(--dark-pink);
+        }
+
+        /* Heart icon in footer */
+        .heart-icon {
+            color: var(--light-heading);
+        }
+
+        .dark .heart-icon {
+            color: var(--dark-pink);
+        }
+    </style>
 </head>
 
-<body class="bg-gray-100">
+<!-- Rest of the HTML remains the same -->
+<body class="transition-colors duration-200">
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle shadow-lg" onclick="toggleTheme()">
+        <i class="fas fa-moon"></i>
+    </button>
 
-  <!-- Header -->
-  <header class="container mx-auto p-8">
-    <div class="flex flex-col items-center mb-10">
-      <img src="https://www.gravatar.com/avatar/509d3b6019d078eb39f42d51e7024abc?s=200" alt="Profile Picture" class="w-32 h-32 rounded-full border-4 border-white">
-      <h1 class="text-2xl font-bold mt-4">Dzubayyan Ahmad</h1>
-    </div>
-  </header>
-
-  <!-- QRIS -->
-  <section class="container mx-auto text-center lg:w-1/3 bg-white p-8 rounded shadow-md mb-8 lg:mx-auto">
-    <h2 class="text-2xl font-semibold mb-6">QRIS (Quick Response Code Indonesian Standard)</h2>
-    <div class="mb-6">
-      <button id="qrisButton" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 focus:outline-none mb-4 flex items-center mx-auto" onclick="toggleQRIS()">
-        <i id="qrisIcon" class="far fa-eye mr-2"></i>
-        <span id="qrisButtonText">Show QRIS</span>
-      </button>
-      
-      <div id="qrisContainer" class="hidden transition-all duration-300" style="opacity: 0; transition: opacity 0.3s ease-in-out;">
-        <div class="flex justify-center items-center">
-          <img src="https://ucarecdn.com/4f2b73ac-dae7-4076-bfdd-4c5e066ce184/-/preview/900x900/-/quality/smart/-/format/auto/" alt="QRIS" class="border-4 border-white">
+    <!-- Header -->
+    <header class="container mx-auto p-8">
+        <div class="flex flex-col items-center mb-10">
+            <img src="https://www.gravatar.com/avatar/509d3b6019d078eb39f42d51e7024abc?s=200" alt="Profile Picture" class="w-32 h-32 rounded-full border-4" style="border-color: var(--light-heading)">
+            <h1 class="text-2xl font-bold mt-4 heading">Dzubayyan Ahmad</h1>
         </div>
-      </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- Bank Account Numbers -->
-  <section class="container mx-auto text-center lg:text-left lg:w-1/3 bg-white p-8 rounded shadow-md mb-8 lg:mx-auto">
-    <h2 class="text-2xl font-semibold mb-6 lg:text-center">Bank Account</h2>
+    <!-- QRIS -->
+    <section class="container mx-auto text-center lg:w-1/3 card p-8 rounded shadow-md mb-8 lg:mx-auto">
+        <h2 class="text-2xl font-semibold mb-6 heading">QRIS (Quick Response Code Indonesian Standard)</h2>
+        <div class="mb-6">
+            <button id="qrisButton" class="button px-3 py-1 rounded focus:outline-none mb-4 flex items-center mx-auto" onclick="toggleQRIS()">
+                <i id="qrisIcon" class="far fa-eye mr-2"></i>
+                <span id="qrisButtonText">Show QRIS</span>
+            </button>
+            
+            <div id="qrisContainer" class="hidden transition-all duration-300" style="opacity: 0;">
+                <div class="flex justify-center items-center">
+                    <img src="https://ucarecdn.com/4f2b73ac-dae7-4076-bfdd-4c5e066ce184/-/preview/900x900/-/quality/smart/-/format/auto/" alt="QRIS" class="border-4" style="border-color: var(--light-accent)">
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="mb-6">
-      <h3 class="text-lg font-semibold mb-2">Jago / Artos</h3>
-      <div class="flex items-center justify-between">
-        <span class="text-gray-700 mr-2">100297069639</span>
-        <button data-clipboard-text="100297069639" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 focus:outline-none">
-          <i class="far fa-copy mr-1"></i> Copy
-        </button>
-      </div>
-    </div>
+    <!-- Bank Account Numbers -->
+    <section class="container mx-auto text-center lg:text-left lg:w-1/3 card p-8 rounded shadow-md mb-8 lg:mx-auto">
+        <h2 class="text-2xl font-semibold mb-6 lg:text-center heading">Bank Account</h2>
+        <div class="mb-6">
+            <h3 class="text-lg font-semibold mb-2 heading">Jago / Artos</h3>
+            <div class="flex items-center justify-between subheading">
+                <span class="mr-2">100297069639</span>
+                <button data-clipboard-text="100297069639" class="button px-3 py-1 rounded focus:outline-none">
+                    <i class="far fa-copy mr-1"></i> Copy
+                </button>
+            </div>
+        </div>
 
-    <div class="mb-6">
-      <h3 class="text-lg font-semibold mb-2">Mandiri</h3>
-      <div class="flex items-center justify-between">
-        <span class="text-gray-700 mr-2">1370020844573</span>
-        <button data-clipboard-text="1370020844573" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 focus:outline-none">
-          <i class="far fa-copy mr-1"></i> Copy
-        </button>
-      </div>
-    </div>
+        <div class="mb-6">
+            <h3 class="text-lg font-semibold mb-2 heading">Mandiri</h3>
+            <div class="flex items-center justify-between subheading">
+                <span class="mr-2">1370020844573</span>
+                <button data-clipboard-text="1370020844573" class="button px-3 py-1 rounded focus:outline-none">
+                    <i class="far fa-copy mr-1"></i> Copy
+                </button>
+            </div>
+        </div>
 
-    <div class="mb-6">
-      <h3 class="text-lg font-semibold mb-2">BCA</h3>
-      <div class="flex items-center justify-between">
-        <span class="text-gray-700 mr-2">1430756687</span>
-        <button data-clipboard-text="1430756687" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 focus:outline-none">
-          <i class="far fa-copy mr-1"></i> Copy
-        </button>
-      </div>
-    </div>
-  </section>
+        <div class="mb-6">
+            <h3 class="text-lg font-semibold mb-2 heading">BCA</h3>
+            <div class="flex items-center justify-between subheading">
+                <span class="mr-2">1430756687</span>
+                <button data-clipboard-text="1430756687" class="button px-3 py-1 rounded focus:outline-none">
+                    <i class="far fa-copy mr-1"></i> Copy
+                </button>
+            </div>
+        </div>
+    </section>
 
-  <!-- E-wallet Numbers -->
-  <section class="container mx-auto text-center lg:text-left lg:w-1/3 bg-white p-8 rounded shadow-md mb-8 lg:mx-auto">
-    <h2 class="text-2xl font-semibold mb-6 lg:text-center">E-Wallet</h2>
+    <!-- E-wallet Numbers -->
+    <section class="container mx-auto text-center lg:text-left lg:w-1/3 card p-8 rounded shadow-md mb-8 lg:mx-auto">
+        <h2 class="text-2xl font-semibold mb-6 lg:text-center heading">E-Wallet</h2>
 
-    <div class="mb-6">
-      <h3 class="text-lg font-semibold mb-2">OVO | GoPay | DANA | LinkAja | ShopeePay</h3>
-      <div class="flex items-center justify-between">
-        <span class="text-gray-700 mr-2">0895369092932</span>
-        <button data-clipboard-text="0895369092932" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 focus:outline-none">
-          <i class="far fa-copy mr-1"></i> Copy
-        </button>
-      </div>
-    </div>
-    <div class="bg-yellow-100 p-3 mt-2 rounded">
-        <p class="text-yellow-800 text-sm lg:text-center">
-          Please <strong>do not top up</strong>, as the top-up fee will be charged to the recipient 🙏🏻
+        <div class="mb-6">
+            <h3 class="text-lg font-semibold mb-2 heading">OVO | GoPay | DANA | LinkAja | ShopeePay</h3>
+            <div class="flex items-center justify-between subheading">
+                <span class="mr-2">0895369092932</span>
+                <button data-clipboard-text="0895369092932" class="button px-3 py-1 rounded focus:outline-none">
+                    <i class="far fa-copy mr-1"></i> Copy
+                </button>
+            </div>
+        </div>
+        <div class="warning p-3 mt-2 rounded">
+            <p class="lg:text-center">
+                Please <strong>avoid using the top-up method</strong>, as the <strong>top-up fee</strong> will be charged to the recipient 🙏🏻
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-8 text-center">
+        <p class="mb-4">
+            © <a href="https://masdzub.com" target="_blank">Dzubayyan Ahmad</a>.
+            Made with <span class="heart-icon">♥</span> in Bandung
         </p>
-    </div>
-    <!-- Add other e-wallet sections similarly -->
-  </section>
+    </footer>
 
-  <!-- Footer -->
-  <footer class="mt-8 text-center text-gray-600">
-    <p class="mb-4">
-      © <a href="https://masdzub.com" target="_blank" class="text-blue-500 hover:underline">Dzubayyan Ahmad</a>.
-      Made with <span class="text-red-500">♥</span> in Bandung
-    </p>
-  </footer>
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+    <script>
+      // Theme toggle functionality
+      function toggleTheme() {
+          document.body.classList.toggle('dark');
+          updateThemeIcon();
+          
+          // Save preference
+          const isDark = document.body.classList.contains('dark');
+          localStorage.setItem('darkMode', isDark);
+      }
 
-  <!-- Clipboard.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-  <script>
-    // Initialize Clipboard.js
-    document.addEventListener('DOMContentLoaded', function () {
-      var clipboard = new ClipboardJS('.bg-blue-500', {
-        text: function(trigger) {
-          return trigger.getAttribute('data-clipboard-text');
-        }
+      function updateThemeIcon() {
+          const icon = document.querySelector('.theme-toggle i');
+          if (document.body.classList.contains('dark')) {
+              icon.className = 'fas fa-sun'; // Replace entire className
+          } else {
+              icon.className = 'fas fa-moon'; // Replace entire className
+          }
+      }
+
+      // Check for system theme preference and saved preference
+      document.addEventListener('DOMContentLoaded', function() {
+          const icon = document.querySelector('.theme-toggle i');
+          
+          // Check if user has a saved preference
+          const savedTheme = localStorage.getItem('darkMode');
+          
+          if (savedTheme === null) {
+              // No saved preference, check system preference
+              const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+              if (prefersDark) {
+                  document.body.classList.add('dark');
+                  icon.className = 'fas fa-sun'; // Set initial icon for dark mode
+              } else {
+                  icon.className = 'fas fa-moon'; // Set initial icon for light mode
+              }
+          } else {
+              // Use saved preference
+              if (savedTheme === 'true') {
+                  document.body.classList.add('dark');
+                  icon.className = 'fas fa-sun';
+              } else {
+                  icon.className = 'fas fa-moon';
+              }
+          }
+          
+          // Listen for system theme changes
+          window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+              if (localStorage.getItem('darkMode') === null) {  // Only auto-switch if no saved preference
+                  if (e.matches) {
+                      document.body.classList.add('dark');
+                      icon.className = 'fas fa-sun';
+                  } else {
+                      document.body.classList.remove('dark');
+                      icon.className = 'fas fa-moon';
+                  }
+              }
+          });
       });
 
-      clipboard.on('success', function(e) {
-        var button = e.trigger;
-        var originalText = button.innerHTML;
-        button.innerHTML = '<i class="far fa-copy mr-1"></i> Copied!';
-        setTimeout(function() {
-          button.innerHTML = originalText;
-        }, 500);
-        e.clearSelection();
+      // Initialize Clipboard.js
+      document.addEventListener('DOMContentLoaded', function () {
+          var clipboard = new ClipboardJS('.button', {
+              text: function(trigger) {
+                  return trigger.getAttribute('data-clipboard-text');
+              }
+          });
+
+          clipboard.on('success', function(e) {
+              var button = e.trigger;
+              var originalText = button.innerHTML;
+              button.innerHTML = '<i class="far fa-copy mr-1"></i> Copied!';
+              setTimeout(function() {
+                  button.innerHTML = originalText;
+              }, 500);
+              e.clearSelection();
+          });
       });
-    });
 
-    function toggleQRIS() {
-  const container = document.getElementById('qrisContainer');
-  const button = document.getElementById('qrisButton');
-  const buttonText = document.getElementById('qrisButtonText');
-  const icon = document.getElementById('qrisIcon');
-  
-  if (container.classList.contains('hidden')) {
-    // Show QRIS
-    container.classList.remove('hidden');
-    setTimeout(() => {
-      container.style.opacity = '1';
-    }, 10);
-    buttonText.textContent = 'Hide QRIS';
-    icon.classList.remove('fa-eye');
-    icon.classList.add('fa-eye-slash');
-  } else {
-    // Hide QRIS
-    container.style.opacity = '0';
-    setTimeout(() => {
-      container.classList.add('hidden');
-    }, 300);
-    buttonText.textContent = 'Show QRIS';
-    icon.classList.remove('fa-eye-slash');
-    icon.classList.add('fa-eye');
-  }
-}
-  </script>
+      function toggleQRIS() {
+          const container = document.getElementById('qrisContainer');
+          const button = document.getElementById('qrisButton');
+          const buttonText = document.getElementById('qrisButtonText');
+          const icon = document.getElementById('qrisIcon');
+          
+          if (container.classList.contains('hidden')) {
+              container.classList.remove('hidden');
+              setTimeout(() => {
+                  container.style.opacity = '1';
+              }, 10);
+              buttonText.textContent = 'Hide QRIS';
+              icon.classList.remove('fa-eye');
+              icon.classList.add('fa-eye-slash');
+          } else {
+              container.style.opacity = '0';
+              setTimeout(() => {
+                  container.classList.add('hidden');
+              }, 300);
+              buttonText.textContent = 'Show QRIS';
+              icon.classList.remove('fa-eye-slash');
+              icon.classList.add('fa-eye');
+          }
+      }
+    </script>
 
-  <!-- Disable Right Click -->
-  <script>
-    document.addEventListener('contextmenu', function(e) {
-      e.preventDefault();
-    });
-  </script>
-  
-  <!-- Font Awesome -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <!-- Disable Right Click -->
+    <script>
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+    </script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 </body>
 </html>
