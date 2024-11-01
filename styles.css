@@ -1,0 +1,64 @@
+:root {
+    /* Dark Mode Colors (Dracula) */
+    --dark-background: #282a36;
+    --dark-current-line: #44475a;
+    --dark-foreground: #f8f8f2;
+    --dark-comment: #6272a4;
+    --dark-cyan: #8be9fd;
+    --dark-green: #50fa7b;
+    --dark-orange: #ffb86c;
+    --dark-pink: #ff79c6;
+    --dark-purple: #bd93f9;
+    --dark-red: #ff5555;
+    --dark-yellow: #f1fa8c;
+}
+
+body {
+    background-color: var(--dark-background);
+    color: var(--dark-foreground);
+}
+
+.card {
+    background-color: var(--dark-current-line);
+    border: 1px solid var(--dark-comment);
+}
+
+.button {
+    background-color: var(--dark-purple);
+    color: var(--dark-foreground);
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background-color: var(--dark-pink);
+}
+
+.heading {
+    color: var(--dark-cyan);
+}
+
+.main-title {
+    color: var(--dark-foreground);
+}
+
+.subheading {
+    color: var(--dark-green);
+}
+
+.warning {
+    background-color: var(--dark-orange);
+    color: var(--dark-background);
+}
+
+a {
+    color: var(--dark-purple);
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: var(--dark-pink);
+}
+
+.heart-icon {
+    color: var(--dark-pink);
+}

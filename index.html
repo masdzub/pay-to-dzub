@@ -8,73 +8,8 @@
     <link rel="icon" href="https://ucarecdn.com/4aa797ea-6ac4-4d01-b36f-87d992de5f07/-/preview/50x50/-/quality/smart/-/format/auto/" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    
-    <style>
-        :root {
-            /* Dark Mode Colors (Dracula) */
-            --dark-background: #282a36;
-            --dark-current-line: #44475a;
-            --dark-foreground: #f8f8f2;
-            --dark-comment: #6272a4;
-            --dark-cyan: #8be9fd;
-            --dark-green: #50fa7b;
-            --dark-orange: #ffb86c;
-            --dark-pink: #ff79c6;
-            --dark-purple: #bd93f9;
-            --dark-red: #ff5555;
-            --dark-yellow: #f1fa8c;
-        }
+    <link href="./styles.css" rel="stylesheet">
 
-        body {
-            background-color: var(--dark-background);
-            color: var(--dark-foreground);
-        }
-
-        .card {
-            background-color: var(--dark-current-line);
-            border: 1px solid var(--dark-comment);
-        }
-
-        .button {
-            background-color: var(--dark-purple);
-            color: var(--dark-foreground);
-            transition: all 0.3s ease;
-        }
-
-        .button:hover {
-            background-color: var(--dark-pink);
-        }
-
-        .heading {
-            color: var(--dark-cyan);
-        }
-
-        .main-title {
-            color: var(--dark-foreground);
-        }
-
-        .subheading {
-            color: var(--dark-green);
-        }
-
-        .warning {
-            background-color: var(--dark-orange);
-            color: var(--dark-background);
-        }
-
-        a {
-            color: var(--dark-purple);
-            transition: all 0.3s ease;
-        }
-
-        a:hover {
-            color: var(--dark-pink);
-        }
-
-        .heart-icon {
-            color: var(--dark-pink);
-        }
-    </style>
 </head>
 
 <body class="transition-colors duration-200">
@@ -100,7 +35,13 @@
                     <img src="https://ucarecdn.com/4f2b73ac-dae7-4076-bfdd-4c5e066ce184/-/preview/900x900/-/quality/smart/-/format/auto/" alt="QRIS" class="border-4" style="border-color: var(--dark-comment)">
                 </div>
             </div>
+            <div class="warning p-3 mt-2 rounded">
+                <p class="lg:text-center">
+                    For amounts over <strong>100K IDR</strong>, please include an additional 0.3% of the total as the <strong>QRIS fee</strong> 🙏🏻
+                </p>
+            </div>
         </div>
+
     </section>
 
     <!-- Bank Account Numbers -->
@@ -148,7 +89,7 @@
         </div>
     </section>
 
-    <!-- E-wallet Numbers -->
+    <!-- E-wallet Numbers 
     <section class="container mx-auto text-center lg:text-left lg:w-1/3 card p-8 rounded shadow-md mb-8 lg:mx-auto">
         <h2 class="text-2xl font-semibold mb-6 lg:text-center main-title">E-Wallet</h2>
 
@@ -167,6 +108,7 @@
             </p>
         </div>
     </section>
+    -->
 
     <!-- Footer remains the same -->
     <footer class="mt-8 text-center">
@@ -178,59 +120,7 @@
 
     <!-- Scripts remain the same -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-    <script>
-        // Initialize Clipboard.js
-        document.addEventListener('DOMContentLoaded', function () {
-            var clipboard = new ClipboardJS('.button', {
-                text: function(trigger) {
-                    return trigger.getAttribute('data-clipboard-text');
-                }
-            });
-
-            clipboard.on('success', function(e) {
-                var button = e.trigger;
-                var originalText = button.innerHTML;
-                button.innerHTML = '<i class="far fa-copy mr-1"></i> Copied!';
-                setTimeout(function() {
-                    button.innerHTML = originalText;
-                }, 500);
-                e.clearSelection();
-            });
-        });
-
-        function toggleQRIS() {
-            const container = document.getElementById('qrisContainer');
-            const button = document.getElementById('qrisButton');
-            const buttonText = document.getElementById('qrisButtonText');
-            const icon = document.getElementById('qrisIcon');
-            
-            if (container.classList.contains('hidden')) {
-                container.classList.remove('hidden');
-                setTimeout(() => {
-                    container.style.opacity = '1';
-                }, 10);
-                buttonText.textContent = 'Hide QRIS';
-                icon.classList.remove('fa-eye');
-                icon.classList.add('fa-eye-slash');
-            } else {
-                container.style.opacity = '0';
-                setTimeout(() => {
-                    container.classList.add('hidden');
-                }, 300);
-                buttonText.textContent = 'Show QRIS';
-                icon.classList.remove('fa-eye-slash');
-                icon.classList.add('fa-eye');
-            }
-        }
-    </script>
-
-    <!-- Disable Right Click -->
-    <script>
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        });
-    </script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script src="./javascript.js"></script>
 </body>
 </html>
