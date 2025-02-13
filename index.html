@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bank and E-wallet</title>
+    <title>pay to dzub</title>
     <meta name="robots" content="noindex, nofollow">
     <link rel="icon" href="https://ucarecdn.com/4aa797ea-6ac4-4d01-b36f-87d992de5f07/-/preview/50x50/-/quality/smart/-/format/auto/" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -33,14 +33,23 @@
             
             <div id="qrisContainer" class="hidden transition-all duration-300" style="opacity: 0;">
                 <div class="flex justify-center items-center">
-                    <img src="https://ucarecdn.com/4f2b73ac-dae7-4076-bfdd-4c5e066ce184/-/preview/900x900/-/quality/smart/-/format/auto/" alt="QRIS" class="border-4" style="border-color: var(--dark-comment)">
+                    <img src="https://ucarecdn.com/ede0d986-d85a-49db-9f17-3c35fb45829b/-/preview/708x1000/-/quality/smart/-/format/auto/" alt="QRIS" class="border-4" style="border-color: var(--dark-comment)">
                 </div>
             </div>
+
+            <div class="warning p-3 mt-2 rounded">
+                <p class="lg:text-center">
+                    You can click the <strong>Show QRIS</strong> to unhide it, and scan it using your <strong>e-wallet</strong> or <strong>banking app</strong> 📱
+                </p>
+            </div>
+
+            <!-- Hide the warning for now
             <div class="warning p-3 mt-2 rounded">
                 <p class="lg:text-center">
                     For amounts over <strong>100K IDR</strong>, please include an additional 0.3% of the total as the <strong>QRIS fee</strong> 🙏🏻
                 </p>
             </div>
+            -->
         </div>
 
     </section>
@@ -74,6 +83,16 @@
             <div class="flex items-center justify-between subheading">
                 <span class="mr-2">000018575225</span>
                 <button data-clipboard-text="000018575225" class="button px-3 py-1 rounded focus:outline-none">
+                    <i class="far fa-copy mr-1"></i> Copy
+                </button>
+            </div>
+        </div>
+
+        <div class="mb-6">
+            <h3 class="text-lg font-semibold mb-2 heading">SeaBank</h3>
+            <div class="flex items-center justify-between subheading">
+                <span class="mr-2">901750362698</span>
+                <button data-clipboard-text="901750362698" class="button px-3 py-1 rounded focus:outline-none">
                     <i class="far fa-copy mr-1"></i> Copy
                 </button>
             </div>
