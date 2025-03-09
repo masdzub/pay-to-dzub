@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pay to dzub</title>
+    <title>Pay to Dzub</title>
     <meta name="robots" content="noindex, nofollow">
     <link rel="icon" href="https://ucarecdn.com/4aa797ea-6ac4-4d01-b36f-87d992de5f07/-/preview/50x50/-/quality/smart/-/format/auto/" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link href="./styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body class="transition-colors duration-200">
@@ -25,14 +25,16 @@
         <h2 class="text-2xl font-semibold mb-6 main-title">QRIS</h2>
         <h3 class="text-l font-semibold mb-6">(Quick Response Code Indonesian Standard)</h3>
         <div class="mb-6">
-            <button id="qrisButton" class="button px-3 py-1 rounded focus:outline-none mb-4 flex items-center mx-auto" onclick="toggleQRIS()">
+            <button id="qrisButton" class="button px-3 py-1 rounded focus:outline-none mb-4 flex items-center mx-auto pulse-button">
                 <i id="qrisIcon" class="far fa-eye mr-2"></i>
                 <span id="qrisButtonText">Show QRIS</span>
             </button>
             
-            <div id="qrisContainer" class="hidden transition-all duration-300" style="opacity: 0;">
-                <div class="flex justify-center items-center">
-                    <img src="https://ucarecdn.com/ede0d986-d85a-49db-9f17-3c35fb45829b/-/preview/708x1000/-/quality/smart/-/format/auto/" alt="QRIS" class="border-4" style="border-color: var(--dark-comment)">
+            <!-- Modal for QRIS -->
+            <div id="qrisModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" id="closeQRIS">&times;</span>
+                    <img id="qrisImage" src="https://ucarecdn.com/ede0d986-d85a-49db-9f17-3c35fb45829b/-/preview/708x1000/-/quality/smart/-/format/auto/" alt="QRIS" class="mx-auto border-4" style="border-color: var(--dark-comment); max-height: 80vh;">
                 </div>
             </div>
 
@@ -41,16 +43,7 @@
                     You can click the <strong>Show QRIS</strong> to unhide it, and scan it using your <strong>e-wallet</strong> or <strong>banking app</strong> 📱
                 </p>
             </div>
-
-            <!-- Hide the warning for now
-            <div class="warning p-3 mt-2 rounded">
-                <p class="lg:text-center">
-                    For amounts over <strong>100K IDR</strong>, please include an additional 0.3% of the total as the <strong>QRIS fee</strong> 🙏🏻
-                </p>
-            </div>
-            -->
         </div>
-
     </section>
 
     <!-- Bank Account Numbers -->
@@ -96,31 +89,9 @@
                 </button>
             </div>
         </div>
-
     </section>
 
-    <!-- E-wallet Numbers 
-    <section class="container mx-auto text-center lg:text-left lg:w-1/3 card p-8 rounded shadow-md mb-8 lg:mx-auto">
-        <h2 class="text-2xl font-semibold mb-6 lg:text-center main-title">E-Wallet</h2>
-
-        <div class="mb-6">
-            <h3 class="text-lg font-semibold mb-2 heading">OVO | GoPay | DANA | LinkAja | ShopeePay</h3>
-            <div class="flex items-center justify-between subheading">
-                <span class="mr-2">0895369092932</span>
-                <button data-clipboard-text="0895369092932" class="button px-3 py-1 rounded focus:outline-none">
-                    <i class="far fa-copy mr-1"></i> Copy
-                </button>
-            </div>
-        </div>
-        <div class="warning p-3 mt-2 rounded">
-            <p class="lg:text-center">
-                Please <strong>avoid using the top-up method</strong>, as the <strong>top-up fee</strong> will be charged to the recipient 🙏🏻
-            </p>
-        </div>
-    </section>
-    -->
-
-    <!-- Footer remains the same -->
+    <!-- Footer -->
     <footer class="mt-8 text-center">
         <p class="mb-4">
             © <a href="https://masdzub.com" target="_blank">Dzubayyan Ahmad</a>.
@@ -128,7 +99,7 @@
         </p>
     </footer>
 
-    <!-- Scripts remain the same -->
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
     <script src="./javascript.js"></script>
